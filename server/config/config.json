@@ -1,0 +1,11 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "123456",
+    "database": "db_qlvt",
+    "host": "localhost",
+    "dialect": "postgres",
+    "logging": false,
+    "timezone": "+07:00"
+  }
+}

@@ -1,0 +1,1 @@
+npx sequelize-cli model:generate --name Role --attributes name:text,description:string
