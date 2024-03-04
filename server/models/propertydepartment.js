@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      // define association
       PropertyDepartment.belongsTo(models.Property, {
         foreignKey: "propertyId",
         targetKey: "id",
@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
       PropertyDepartment.belongsTo(models.Department, {
         foreignKey: "departmentId",
         targetKey: "id",
-        as: "department",
+        as: "departmentName",
       });
     }
   }

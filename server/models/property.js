@@ -9,15 +9,20 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Property.belongsTo(models.PropertyType, {
+        foreignKey: "propertyTypeId",
+        targetKey: "id",
+        as: "propertyType",
+      });
       Property.belongsTo(models.User, {
         foreignKey: "postedBy",
         targetKey: "id",
         as: "user",
       });
-      Property.belongsTo(models.PropertyType, {
-        foreignKey: "propertyTypeId",
-        targetKey: "id",
-        as: "propertyType",
+      Property.hasOne(models.PropertyDepartment, {
+        foreignKey: "propertyId",
+        sourceKey: "id",
+        as: "propertyDepartment",
       });
     }
   }

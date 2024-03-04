@@ -16,13 +16,15 @@ const Search = ({ navigate }) => {
   });
   const { departments } = useDepartmentStore();
   const { propertyTypes } = usePropertiesStore();
+
   const propertyType = watch("propertyType");
   const department = watch("department");
+
   const handleSearchParams = (data) => {
     const params = new Object();
 
     if (department) params.department = data.department.name;
-    if (propertyType) params.propertyType = data.propertyType.name;
+    if (propertyType) params.propertyType = data.propertyType.id;
 
     navigate({
       pathname: `/${path.PROPERTIES}`,
@@ -31,7 +33,7 @@ const Search = ({ navigate }) => {
   };
 
   return (
-    <form className="h-[128px] py-8 mt-[-64px] grid grid-cols-3 relative z-20 bg-white rounded-md shadow-lg w-[822px] mx-auto border">
+    <form className="h-[128px] py-8 mt-[-64px] grid grid-cols-3 relative z-20 bg-white rounded-lg shadow-2xl w-[822px] mx-auto border">
       <SearchItem title="Departments">
         <SelectLib
           id="department"
@@ -55,7 +57,11 @@ const Search = ({ navigate }) => {
         />
       </SearchItem>
       <div className="flex justify-center items-center">
-        <Button handleOnClick={handleSubmit(handleSearchParams)}>Search</Button>
+        <Button
+          className="bg-main-600 px-8 py-2 text-white rounded-md hover:bg-main-700 transition-all duration-300 ease-in-out"
+          handleOnClick={handleSubmit(handleSearchParams)}>
+          Search
+        </Button>
       </div>
     </form>
   );

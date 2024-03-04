@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { BreadCrumb, PropertyCard } from "~/components";
 import { apiGetProperties } from "~/apis/properties";
+import { useSearchParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Properties = () => {
   const [properties, setProperties] = useState();
+  const [searchParams] = useSearchParams();
   useEffect(() => {
-    const fetchProperties = async () => {
+    const fetchProperties = async (params) => {
       const reponse = await apiGetProperties({
         limit: import.meta.env.VITE_LIMITS,
+        ...params,
       });
       if (reponse.success) setProperties(reponse.properties);
-      console.log(reponse.properties.rows);
     };
-    fetchProperties();
-  }, []);
+    const params = Object.fromEntries(searchParams);
+    fetchProperties(params);
+  }, [searchParams]);
   return (
     <div className="w-full">
       <div className="relative w-full">

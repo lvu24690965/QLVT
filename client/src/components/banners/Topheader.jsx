@@ -57,7 +57,11 @@ const Topheader = ({ location }) => {
               </span>
             </div>
             <img
-              src={current?.avatar || "/user.svg"}
+              src={
+                current?.avatar || location.pathname === "/"
+                  ? "/user.svg"
+                  : "./userb.svg"
+              }
               alt="avatar"
               className="w-12 h-12 object-cover rounded-full"
             />

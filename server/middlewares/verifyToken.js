@@ -17,7 +17,7 @@ const verifyToken = (req, res, next) => {
 };
 const isUser = (req, res, next) => {
   const { roleCode } = req.user;
-  if (roleCode !== "ROL1" || roleCode !== "ROL5" || roleCode !== "ROL3") {
+  if (roleCode !== "ROL1" && roleCode !== "ROL5" && roleCode !== "ROL3") {
     return throwErrorWithStatus(403, "You don't have permission", res, next);
   }
   next();
@@ -31,7 +31,7 @@ const isAdmin = (req, res, next) => {
 };
 const isManager = (req, res, next) => {
   const { roleCode } = req.user;
-  if (roleCode !== "ROL1" || roleCode !== "ROL3") {
+  if (roleCode !== "ROL1" && roleCode !== "ROL3") {
     return throwErrorWithStatus(403, "You don't have permission", res, next);
   }
   next();

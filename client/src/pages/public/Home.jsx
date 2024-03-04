@@ -23,11 +23,11 @@ function Section({ children }) {
 const Home = () => {
   return (
     <div className="bg-white w-full">
-      <div className="w-full h-fit relative">
+      <div className="w-full h-fit relative rounded-bl-[200px]">
         <img
           src="./bg-hero.png"
           alt="banner"
-          className="h-[700px] w-full object-cover"
+          className="h-[700px] w-full object-cover rounded-bl-[200px]"
         />
 
         <div className="absolute inset-0 gap-4 flex flex-col justify-center">
@@ -44,8 +44,10 @@ const Home = () => {
       <Search />
 
       <Section>
-        <div className="w-main mx-auto bg-black h-[700px] flex items-center justify-center text-white">
-          content
+        <div className="w-full bg-gray-700 -my-[64px] absolute">
+          <div className="w-main my-[64px] mx-auto bg-black h-[550px] flex flex-col items-center justify-center text-white">
+            content
+          </div>
         </div>
       </Section>
     </div>

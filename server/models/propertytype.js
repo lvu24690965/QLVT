@@ -8,7 +8,12 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      // define association
+      PropertyType.hasMany(models.Property, {
+        foreignKey: "propertyTypeId",
+        sourceKey: "id",
+        as: "properties",
+      });
     }
   }
   PropertyType.init(

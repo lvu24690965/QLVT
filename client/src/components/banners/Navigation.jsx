@@ -15,8 +15,8 @@ const Navigation = ({ location }) => {
     <div
       className={twMerge(
         clsx(
-          "h-[85px] bg-transparent flex items-center justify-between  fixed z-10 top-[85px] w-full px-[100px] py-[26px]",
-          location.pathname !== "/" && "bg-white text-main-600"
+          "h-[85px] bg-transparent flex items-center justify-between  fixed z-10 top-[85px] w-full px-[100px] py-[26px] shadow-lg",
+          location.pathname !== "/" && "bg-white text-main-600 shadow-lg "
         )
       )}>
       <Link to="/">
@@ -44,7 +44,11 @@ const Navigation = ({ location }) => {
         {navigation.map((el) => (
           <NavLink
             className={({ isActive }) =>
-              clsx(isActive && "text-main-600 font-bold")
+              clsx(
+                isActive &&
+                  "text-main-600 font-bold hover:text-gray-400 hover:duration-350 disabled hover:scale-100",
+                "hover:transition hover:duration-350 hover:ease-out hover:scale-110 hover:font-medium"
+              )
             }
             key={el.id}
             to={el.path}>
@@ -54,10 +58,10 @@ const Navigation = ({ location }) => {
         {current ? (
           <Button
             className={clsx(
-              "bg-main-600 border-main-600 border px-14",
+              "bg-main-600 border-main-600 border px-14 rounded-md hover:bg-transparent hover:border-white transition-all duration-300 ease-in-out",
               location.pathname === "/"
                 ? "text-white"
-                : "text-black border-main-600 border px-14"
+                : "text-black border-main-600 border px-14 hover:border-black"
             )}
             handleOnClick={() => setModal(false, <Login />)}>
             Submission
@@ -65,7 +69,7 @@ const Navigation = ({ location }) => {
         ) : (
           <Button
             className={clsx(
-              "bg-main-600 border-main-600 border px-14",
+              "bg-main-600 border-main-600 border px-14 rounded-md hover:bg-main-700 transition-all duration-300 ease-in-out",
               location.pathname === "/"
                 ? "text-amber-100"
                 : "text-black border-amber-600 border px-14"

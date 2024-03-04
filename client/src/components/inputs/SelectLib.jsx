@@ -10,13 +10,7 @@ const customStyles = {
     overflow: "auto", // Add this line
   }),
 };
-const handleMenuOpen = () => {
-  document.body.style.overflow = "hidden";
-};
 
-const handleMenuClose = () => {
-  document.body.style.overflow = "auto";
-};
 const SelectLib = ({
   style = "form-select",
   containerClassname,
@@ -55,8 +49,6 @@ const SelectLib = ({
             <span>{option.label}</span>
           </div>
         )}
-        onMenuOpen={handleMenuOpen}
-        onMenuClose={handleMenuClose}
         className={{
           control: () => clsx(""),
           input: () => "",
@@ -64,16 +56,7 @@ const SelectLib = ({
         }}
         styles={customStyles}
       />
-      {/*<select
-        id={id}
-        type={type}
-        className={twMerge(clsx(style, "placeholder:text-sm", inputClassname))}
-        {...register(id, validate)}>
-        <option value="">{placeholder}</option>
-        {options.map((el) => (
-          <option key={el.code}>{el.label}</option>
-        ))}
-      </select> */}
+
       {errors[id] && (
         <small className="text-red-500">{errors[id]?.message}</small>
       )}

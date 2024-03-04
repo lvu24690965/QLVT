@@ -1,5 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const db = require("../models");
+const { col } = require("sequelize");
 const createNewProperty = asyncHandler(async (req, res) => {
   const { name } = req.body;
   const response = await db.Property.findOrCreate({
@@ -34,7 +35,17 @@ const createNewProperty = asyncHandler(async (req, res) => {
 module.exports = {
   createNewProperty,
   getProperties: asyncHandler(async (req, res) => {
-    const { limit, page, fields, type, name, sort, ...query } = req.query;
+    const {
+      limit,
+      page,
+      propertyType,
+      department,
+      fields,
+      type,
+      name,
+      sort,
+      ...query
+    } = req.query;
     const options = {};
     if (fields) {
       const attributes = fields.split(",");
@@ -45,12 +56,17 @@ module.exports = {
         };
       else options.attributes = attributes;
     }
-    if (name)
-      query.name = db.Sequelize.where(
-        db.Sequelize.fn("LOWER", db.Sequelize.col("name")),
-        "LIKE",
-        `%${name.toLowerCase()}%`
+
+    if (propertyType)
+      query.propertyType = db.Sequelize.where(
+        col("propertyTypeId"),
+        propertyType
       );
+    // Thêm điều kiện lọc theo department là trường name của bảng department
+    if (department) {
+      query["$propertyDepartment.departmentName.name$"] = department;
+    }
+
     //Sorting
     //order = [[createdAt,ASC ], [name , DESC]]
     if (sort) {
@@ -65,6 +81,20 @@ module.exports = {
     if (!limit) {
       const response = await db.Property.findAll({
         where: query,
+        include: [
+          {
+            model: db.PropertyDepartment,
+            as: "propertyDepartment",
+            attributes: ["departmentId"],
+            include: [
+              {
+                model: db.Department,
+                as: "departmentName",
+                attributes: ["name"],
+              },
+            ],
+          },
+        ],
         ...options,
       });
       return res.json({
@@ -83,6 +113,20 @@ module.exports = {
     options.limit = +limit;
     const response = await db.Property.findAndCountAll({
       where: query,
+      include: [
+        {
+          model: db.PropertyDepartment,
+          as: "propertyDepartment",
+          attributes: ["departmentId"],
+          include: [
+            {
+              model: db.Department,
+              as: "departmentName",
+              attributes: ["name"],
+            },
+          ],
+        },
+      ],
       ...options,
     });
     return res.json({
