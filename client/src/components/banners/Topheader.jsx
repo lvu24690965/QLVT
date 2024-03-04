@@ -18,7 +18,7 @@ const Topheader = ({ location }) => {
     <div
       className={twMerge(
         clsx(
-          "h-[85px] bg-transparent border-b border-main-600 flex items-center justify-between fixed z-50 w-full top-0 px-[100px] py-[26px] text-white",
+          "h-[85px] bg-transparent border-b border-gray-300 flex items-center justify-between fixed z-50 w-full top-0 px-[100px] py-[26px] text-white",
           location.pathname !== "/" && "bg-main-600 text-black"
         )
       )}>

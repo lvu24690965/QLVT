@@ -40,6 +40,7 @@ const Search = ({ navigate }) => {
           placeholder="Type your required Department"
           options={departments?.map((el) => ({ ...el, label: el.name }))}
           onChange={(val) => setValue("department", val)}
+          containerClassname={"px-2"}
         />
       </SearchItem>
       <SearchItem title="Property Type">
@@ -50,6 +51,7 @@ const Search = ({ navigate }) => {
           placeholder="Select Property Type"
           options={propertyTypes?.map((el) => ({ ...el, label: el.name }))}
           onChange={(val) => setValue("propertyType", val)}
+          containerClassname={"px-2"}
         />
       </SearchItem>
       <div className="flex justify-center items-center">

@@ -26,8 +26,16 @@ const CreateProperty = () => {
     setError,
     clearErrors,
   } = useForm();
-
   const { current } = useUserStore();
+  const { propertyTypes } = usePropertiesStore();
+  const { departments } = useDepartmentStore();
+  const getImage = (images) => {
+    if (images && images.length > 0) clearErrors("images");
+    setValue(
+      "images",
+      images?.map((el) => el.path)
+    );
+  };
   useEffect(() => {
     // Kiểm tra nếu current tồn tại và có id
     if (current?.id) {
@@ -35,9 +43,6 @@ const CreateProperty = () => {
       setValue("postedBy", current.id);
     }
   }, [current?.id, setValue]);
-
-  const { propertyTypes } = usePropertiesStore();
-  const { departments } = useDepartmentStore();
   const handleCreateNewProperty = async (data) => {
     if (!data.images || data.images.length === 0) {
       setError("images", {
@@ -46,27 +51,18 @@ const CreateProperty = () => {
       });
     } else {
       const { images, ...rest } = data;
-
       const response = await apiCreateNewProperty({
         ...rest,
         images: images[0],
       });
-      console.log(response?.image);
       if (response.success) {
         toast.success(response.mes);
+        getImage([]);
         reset();
-        getImages([]);
       } else {
         toast.error(response.mes);
       }
     }
-  };
-  const getImage = (images) => {
-    if (images && images.length > 0) clearErrors("images");
-    setValue(
-      "images",
-      images?.map((el) => el.path)
-    );
   };
   return (
     <div className="">

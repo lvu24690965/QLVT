@@ -1,5 +1,6 @@
 import path from "./path";
 import { MdOutlineSpaceDashboard, MdDevicesOther } from "react-icons/md";
+import { MdOutlineLocalFireDepartment } from "react-icons/md";
 export const navigation = [
   {
     id: 1,
@@ -30,7 +31,7 @@ export const navigation = [
 export const adminSidebar = [
   {
     id: 12,
-    path: `/${path.ADMIN_LAYOUT}/${path.DASHBOARD}`,
+    path: `/${path.ADMIN_LAYOUT}/${path.ADMIN_DASHBOARD}`,
     name: "Dashboard",
     icon: <MdOutlineSpaceDashboard />,
     type: "SINGLE",
@@ -74,7 +75,7 @@ export const adminSidebar = [
   {
     id: 19,
     name: "Department",
-    icon: <MdDevicesOther />,
+    icon: <MdOutlineLocalFireDepartment />,
     type: "PARENT",
     subs: [
       {

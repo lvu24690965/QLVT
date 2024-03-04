@@ -21,8 +21,8 @@ import {
   CreateDepartment,
   CreateProperty,
   CreatePropertyType,
-  Dashboard,
   ManageDepartment,
+  Dashboard,
   ManageProperty,
   ManagePropertyType,
 } from "./pages/admin";

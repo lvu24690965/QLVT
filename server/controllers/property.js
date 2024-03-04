@@ -14,7 +14,6 @@ const createNewProperty = asyncHandler(async (req, res) => {
     if (req.body?.departmentId) {
       departmentId.push(req.body?.departmentId);
     }
-
     //Build bulker for propertyDepartments
     const propertyDepartments = departmentId.map((el) => ({
       propertyId,

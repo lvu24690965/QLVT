@@ -3,6 +3,20 @@ import React from "react";
 import Select from "react-select";
 import { twMerge } from "tailwind-merge";
 
+const customStyles = {
+  menu: (provided, state) => ({
+    ...provided,
+    maxHeight: "200px", // Change this to your desired max height
+    overflow: "auto", // Add this line
+  }),
+};
+const handleMenuOpen = () => {
+  document.body.style.overflow = "hidden";
+};
+
+const handleMenuClose = () => {
+  document.body.style.overflow = "auto";
+};
 const SelectLib = ({
   style = "form-select",
   containerClassname,
@@ -20,7 +34,7 @@ const SelectLib = ({
   return (
     <div
       className={twMerge(
-        clsx("flex flex-col gap-2 w-full", containerClassname)
+        clsx("flex flex-col gap-2 w-full ", containerClassname)
       )}>
       {label && (
         <label className="font-medium text-main-700" htmlFor={id}>
@@ -41,11 +55,14 @@ const SelectLib = ({
             <span>{option.label}</span>
           </div>
         )}
+        onMenuOpen={handleMenuOpen}
+        onMenuClose={handleMenuClose}
         className={{
           control: () => clsx(""),
           input: () => "",
           option: () => "",
         }}
+        styles={customStyles}
       />
       {/*<select
         id={id}

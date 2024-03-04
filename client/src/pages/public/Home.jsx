@@ -25,11 +25,10 @@ const Home = () => {
     <div className="bg-white w-full">
       <div className="w-full h-fit relative">
         <img
-          src="./bg-hero.jpg"
+          src="./bg-hero.png"
           alt="banner"
-          className="h-[700px] w-full bg-gray-dark object-fit filter brightness-50"
+          className="h-[700px] w-full object-cover"
         />
-        <p></p>
 
         <div className="absolute inset-0 gap-4 flex flex-col justify-center">
           <h1 className="text-3xl px-[139px] pt-16 text-main-600">
