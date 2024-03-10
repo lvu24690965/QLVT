@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
       },
 
       avatar: DataTypes.STRING,
-      departmentId: DataTypes.UUID,
+      departmentId: DataTypes.INTEGER,
     },
     {
       sequelize,

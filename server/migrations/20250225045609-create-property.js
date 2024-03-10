@@ -5,9 +5,9 @@ module.exports = {
     await queryInterface.createTable("Properties", {
       id: {
         allowNull: false,
+        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.UUID,
-        defaultValue: Sequelize.literal("gen_random_uuid()"),
+        type: Sequelize.INTEGER,
       },
       name: {
         type: Sequelize.STRING,
@@ -22,7 +22,7 @@ module.exports = {
         defaultValue: true,
       },
       propertyTypeId: {
-        type: Sequelize.UUID,
+        type: Sequelize.INTEGER,
         references: {
           model: "PropertyTypes",
           key: "id",
@@ -38,7 +38,7 @@ module.exports = {
         allowNull: false,
       },
       postedBy: {
-        type: Sequelize.UUID,
+        type: Sequelize.INTEGER,
         references: {
           model: "Users",
           key: "id",

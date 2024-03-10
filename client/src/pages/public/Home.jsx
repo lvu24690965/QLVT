@@ -3,6 +3,8 @@ import { useRef } from "react";
 import { useInView } from "framer-motion";
 import { Search } from "~/components";
 
+{
+  /*
 function Section({ children }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
@@ -19,6 +21,8 @@ function Section({ children }) {
       </span>
     </section>
   );
+}
+*/
 }
 const Home = () => {
   return (
@@ -43,13 +47,9 @@ const Home = () => {
 
       <Search />
 
-      <Section>
-        <div className="w-full bg-gray-700 -my-[64px] absolute">
-          <div className="w-main my-[64px] mx-auto bg-black h-[550px] flex flex-col items-center justify-center text-white">
-            content
-          </div>
-        </div>
-      </Section>
+      <div className="w-full bg-gray-700 -my-[64px] absolute">
+        <div className="w-main my-[64px] mx-auto bg-black h-[550px] flex flex-col items-center justify-center text-white"></div>
+      </div>
     </div>
   );
 };

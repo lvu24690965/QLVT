@@ -183,7 +183,7 @@ const Login = () => {
             errors={errors}
           />
         )}
-        {variant === "REGISTER" && (
+        {/*variant === "REGISTER" && (
           <InputRadio
             register={register}
             id="roleCode"
@@ -198,12 +198,13 @@ const Login = () => {
                 label: el.value,
               }))}
           />
-        )}
+            )*/}
         {variant === "REGISTER" && (
           <SelectLib
             id="departmentId"
             register={register}
             errors={errors}
+            label={"Department"}
             placeholder="Type your required Department"
             options={departments?.map((el) => ({ ...el, label: el.name }))}
             onChange={(val) => setValue("departmentId", val?.id)}

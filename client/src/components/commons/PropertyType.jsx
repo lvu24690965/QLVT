@@ -2,7 +2,8 @@ import clsx from "clsx";
 import React from "react";
 import { twMerge } from "tailwind-merge";
 import { ImSpinner2 } from "react-icons/im";
-const Button = ({
+
+const PropertyType = ({
   children,
   className,
   handleOnClick,
@@ -15,7 +16,7 @@ const Button = ({
       onClick={handleOnClick}
       className={twMerge(
         clsx(
-          "py-3 px-4 flex justify-center text-amber-100 bg-main-600 rounded-md items-center gap-5",
+          "py-3 px-4 flex justify-center text-amber-100 bg-transparent items-center gap-5",
           className,
           disabled && "opacity-50"
         )
@@ -31,4 +32,4 @@ const Button = ({
   );
 };
 
-export default Button;
+export default PropertyType;

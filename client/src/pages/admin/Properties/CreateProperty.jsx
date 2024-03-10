@@ -103,20 +103,21 @@ const CreateProperty = () => {
         <InputRadio
           register={register}
           id="isAvalable"
+          label={"Avalable"}
           optionsClassname="grid grid-cols-2 gap-4"
-          label="Is Avalable"
           validate={{ required: "This field is required" }}
           errors={errors}
           option={[
-            { value: "true", label: "Yes" },
-            { value: "false", label: "No" },
+            { value: "true", label: "Avalable" },
+            { value: "false", label: "Not Avalable" },
           ]}
         />
         <SelectLib
           id="propertyTypeId"
           register={register}
           errors={errors}
-          placeholder="Select Property Type"
+          label={"Property Type"}
+          placeholder="Type or Select Property Type"
           options={propertyTypes?.map((el) => ({ ...el, label: el.name }))}
           onChange={(val) => setValue("propertyTypeId", val?.id)}
         />
@@ -124,7 +125,8 @@ const CreateProperty = () => {
           id="departmentId"
           register={register}
           errors={errors}
-          placeholder="Type your required Department"
+          label={"Department"}
+          placeholder="Type or Select Department"
           options={departments?.map((el) => ({ ...el, label: el.name }))}
           onChange={(val) => setValue("departmentId", val?.id)}
         />

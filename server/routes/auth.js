@@ -2,7 +2,12 @@ const router = require("express").Router();
 const Joi = require("joi");
 const ctrls = require("../controllers/auth");
 const validateDto = require("../middlewares/validation");
-const { string, stringReq, numberReq } = require("../middlewares/joiSchema");
+const {
+  string,
+  number,
+  stringReq,
+  numberReq,
+} = require("../middlewares/joiSchema");
 router.post(
   "/signup",
   validateDto(
@@ -11,7 +16,7 @@ router.post(
       phone: numberReq,
       password: stringReq,
       roleCode: string,
-      departmentId: string,
+      departmentId: number,
     })
   ),
   ctrls.register

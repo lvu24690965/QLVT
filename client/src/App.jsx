@@ -49,7 +49,6 @@ function App() {
           <Route path={path.ABOUT_US} element={<AboutUs />} />
           <Route path={path.PERSONELS} element={<Personels />} />
           <Route path={path.PROPERTIES} element={<Properties />} />
-          <Route path={path.SEARCH} element={<Search />} />
         </Route>
         {/* Admin routes*/}
         <Route path={path.ADMIN_LAYOUT} element={<AdminLayout />}>

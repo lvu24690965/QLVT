@@ -5,6 +5,7 @@ const path = {
   ABOUT_US: "about",
   PERSONELS: "personels",
   PROPERTIES: "properties",
+
   SEARCH: "search",
 
   //ADMIN

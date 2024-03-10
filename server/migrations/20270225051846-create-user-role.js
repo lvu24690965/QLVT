@@ -5,12 +5,12 @@ module.exports = {
     await queryInterface.createTable("User_Roles", {
       id: {
         allowNull: false,
+        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.UUID,
-        defaultValue: Sequelize.literal("gen_random_uuid()"),
+        type: Sequelize.INTEGER,
       },
       userId: {
-        type: Sequelize.UUID,
+        type: Sequelize.INTEGER,
         references: {
           model: "Users",
           key: "id",

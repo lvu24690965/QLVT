@@ -1,35 +1,36 @@
 "use strict";
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class PropertyDepartment extends Model {
+  class Avalable extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association
-      PropertyDepartment.belongsTo(models.Property, {
+      // define association here
+      Avalable.belongsTo(models.Property, {
         foreignKey: "propertyId",
         targetKey: "id",
         as: "property",
       });
-      PropertyDepartment.belongsTo(models.Department, {
+      Avalable.belongsTo(models.Department, {
         foreignKey: "departmentId",
         targetKey: "id",
-        as: "departmentName",
+        as: "department",
       });
     }
   }
-  PropertyDepartment.init(
+  Avalable.init(
     {
       propertyId: DataTypes.INTEGER,
       departmentId: DataTypes.INTEGER,
+      description: DataTypes.STRING,
     },
     {
       sequelize,
-      modelName: "PropertyDepartment",
+      modelName: "Avalable",
     }
   );
-  return PropertyDepartment;
+  return Avalable;
 };

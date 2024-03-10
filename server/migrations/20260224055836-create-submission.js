@@ -5,19 +5,19 @@ module.exports = {
     await queryInterface.createTable("Submissions", {
       id: {
         allowNull: false,
+        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.UUID,
-        defaultValue: Sequelize.literal("gen_random_uuid()"),
+        type: Sequelize.INTEGER,
       },
       propertyId: {
-        type: Sequelize.UUID,
+        type: Sequelize.INTEGER,
         references: {
           model: "Properties",
           key: "id",
         },
       },
       uid: {
-        type: Sequelize.UUID,
+        type: Sequelize.INTEGER,
         references: {
           model: "Users",
           key: "id",

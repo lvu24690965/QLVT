@@ -3,8 +3,10 @@ const db = require("../models");
 const { col } = require("sequelize");
 const createNewProperty = asyncHandler(async (req, res) => {
   const { name } = req.body;
+  //insert to property where name = name
   const response = await db.Property.findOrCreate({
     where: { name },
+
     defaults: req.body,
   });
 
@@ -106,9 +108,8 @@ module.exports = {
       });
     }
     //Pagination
-    const prevPage = page - 1 > 0 ? page - 1 : 1;
 
-    const offset = (page - 1) * limit;
+    const offset = (page && +page > 1 ? +page - 1 : 0) * limit;
     if (offset) options.offset = offset;
     options.limit = +limit;
     const response = await db.Property.findAndCountAll({
@@ -122,9 +123,19 @@ module.exports = {
             {
               model: db.Department,
               as: "departmentName",
-              attributes: ["name"],
+              attributes: ["name", "image"],
             },
           ],
+        },
+        {
+          model: db.User,
+          as: "rUser",
+          attributes: ["name", "phone"],
+        },
+        {
+          model: db.PropertyType,
+          as: "propertyType",
+          attributes: ["name"],
         },
       ],
       ...options,
@@ -132,7 +143,9 @@ module.exports = {
     return res.json({
       success: Boolean(response),
       mes: response ? "Get properties successfully" : "Get properties failed",
-      properties: response,
+      properties: response
+        ? { ...response, limit: +limit, page: +page ? +page : 1 }
+        : null,
     });
   }),
 };

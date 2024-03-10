@@ -5,9 +5,9 @@ module.exports = {
     await queryInterface.createTable("Users", {
       id: {
         allowNull: false,
+        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.UUID,
-        defaultValue: Sequelize.literal("gen_random_uuid()"),
+        type: Sequelize.INTEGER,
       },
       name: {
         type: Sequelize.STRING,
@@ -23,12 +23,11 @@ module.exports = {
         type: Sequelize.STRING,
       },
       departmentId: {
-        type: Sequelize.UUID,
+        type: Sequelize.INTEGER,
         references: {
           model: "Departments",
           key: "id",
         },
-        defaultValue: "20d16e03-1b7d-4142-8ba3-393318da61b8",
       },
       createdAt: {
         allowNull: false,

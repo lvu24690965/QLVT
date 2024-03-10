@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   UserMedia.init(
     {
-      uid: DataTypes.UUID,
+      uid: DataTypes.INTEGER,
       provider: DataTypes.STRING,
       link: DataTypes.STRING,
       icon: DataTypes.STRING,

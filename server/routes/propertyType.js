@@ -7,7 +7,7 @@ const { stringReq, string } = require("../middlewares/joiSchema");
 
 router.post(
   "/",
-  verifyToken,
+  //verifyToken,
   //isAdmin,
   validateDto(
     Joi.object({ name: stringReq, description: stringReq, image: stringReq })

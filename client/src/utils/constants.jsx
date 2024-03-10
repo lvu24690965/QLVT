@@ -5,27 +5,22 @@ export const navigation = [
   {
     id: 1,
     path: "/",
-    text: "TRANG CHỦ",
+    text: "HOME",
   },
   {
     id: 2,
     path: `/${path.ABOUT_US}`,
-    text: "GIỚI THIỆU",
+    text: "ABOUT US",
   },
   {
     id: 3,
     path: `/${path.PERSONELS}`,
-    text: "NHÂN SỰ",
+    text: "PERSONELS",
   },
   {
     id: 4,
     path: `/${path.PROPERTIES}`,
-    text: "THIẾT BỊ",
-  },
-  {
-    id: 5,
-    path: `/${path.SEARCH}`,
-    text: "TÌM KIẾM",
+    text: "PROPERTIES",
   },
 ];
 export const adminSidebar = [

@@ -16,8 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       });
       Property.belongsTo(models.User, {
         foreignKey: "postedBy",
-        targetKey: "id",
-        as: "user",
+        as: "rUser",
       });
       Property.hasOne(models.PropertyDepartment, {
         foreignKey: "propertyId",
@@ -35,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
         values: ["RECEIVE", "REPAIR", "RENTED"],
       },
       isAvalable: DataTypes.BOOLEAN,
-      propertyTypeId: DataTypes.UUID,
+      propertyTypeId: DataTypes.INTEGER,
       images: {
         type: DataTypes.TEXT,
         get() {
@@ -46,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
           return this.setDataValue("images", JSON.stringify(arrayImages));
         },
       },
-      postedBy: DataTypes.UUID,
+      postedBy: DataTypes.INTEGER,
       dateBuy: DataTypes.INTEGER,
     },
     {

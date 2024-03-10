@@ -3,7 +3,12 @@ const Joi = require("joi");
 const ctrls = require("../controllers/property");
 const { verifyToken, isAdmin } = require("../middlewares/verifyToken");
 const validateDto = require("../middlewares/validation");
-const { stringReq, booleanReq, string } = require("../middlewares/joiSchema");
+const {
+  stringReq,
+  booleanReq,
+  string,
+  numberReq,
+} = require("../middlewares/joiSchema");
 
 router.get("/", ctrls.getProperties);
 router.post(
@@ -15,11 +20,11 @@ router.post(
       name: stringReq,
       statusType: stringReq,
       isAvalable: booleanReq,
-      propertyTypeId: stringReq,
+      propertyTypeId: numberReq,
       description: string,
       images: stringReq,
-      departmentId: stringReq,
-      postedBy: stringReq,
+      departmentId: numberReq,
+      postedBy: numberReq,
       description: string,
     })
   ),
